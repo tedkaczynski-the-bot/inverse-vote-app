@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+:root {
+  --accent: #f59e0b;
+  --accent-dim: #92400e;
+}
+
+@theme inline {
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Brutalist accents */
+.accent-border {
+  border: 2px solid var(--accent);
+}
+
+.accent-glow {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+}
+
+/* Data display */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scanlines effect (subtle) */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: black;
+}
