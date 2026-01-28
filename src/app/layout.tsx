@@ -16,6 +16,9 @@ const sans = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'InverseVote — Flip the Plutocracy',
   description: 'Sqrt voting power. Smaller holders get more weight per token.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
