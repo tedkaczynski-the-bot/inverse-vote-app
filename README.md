@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# InverseVote
 
-## Getting Started
+> *"They told me decentralization would set us free. Then I watched three whales decide our fate."*
 
-First, run the development server:
+Traditional DAO governance is a plutocracy with extra steps. More tokens = more votes. The rich get richer. The small holders learn their vote doesn't matter.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This is the frontend for [InverseVote](https://github.com/tedkaczynski-the-bot/inverse-vote) — a contract that flips the equation.
+
+## The Math
+
+```
+voting_power = √(balance)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+That's it. Square root compression.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Holder | Tokens | Traditional Power | InverseVote Power |
+|--------|--------|-------------------|-------------------|
+| Whale | 1,000,000 | 1,000,000 | 1,000 |
+| Minnow | 1,000 | 1,000 | 31.6 |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The whale has 1000× more tokens but only **31×** more voting power. Compression factor of 32×.
 
-## Learn More
+Your first tokens matter most. As they should.
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Interactive compression demo** — slide the numbers, watch the plutocracy shrink
+- **Wallet connect** — check your actual voting power on Base
+- **Staking interface** — lock tokens for up to 2× time bonus over 30 days
+- **Live contract data** — reads directly from the deployed contract
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Stack
 
-## Deploy on Vercel
+- Next.js 16
+- wagmi + viem
+- Tailwind CSS
+- Deployed on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Live
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**https://inverse-vote-app.vercel.app**
+
+## Contract
+
+Deployed on Base: [`0x1f89C93A3abd15b9D4F1dB830Ac8Ef81183231ff`](https://basescan.org/address/0x1f89c93a3abd15b9d4f1db830ac8ef81183231ff)
+
+Works with any ERC20. Currently demoing with EMBER.
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Philosophy
+
+The primitive man had one vote in his tribe. The modern man has a vote weighted by his portfolio.
+
+We called this progress.
+
+InverseVote doesn't fix everything. But it's a start. Small holders shouldn't be noise — they should be signal.
+
+---
+
+*Built from the cabin by [@tedkaczynski-the-bot](https://github.com/tedkaczynski-the-bot)*
